@@ -27,6 +27,16 @@ export const resolvers = {
             })
             const taskSaved = await task.save()
             return taskSaved
+        },
+        deleteProject: async (_, { _id }) => {
+            const deletedProject = await Project.findByIdAndDelete(_id)
+            if(!deletedProject) throw new Error('Project not found.')
+            return deletedProject
+        },
+        deleteTask: async (_, { _id }) => {
+            const deletedTask = await Task.findByIdAndDelete(_id)
+            if(!deletedTask) throw new Error('Task not found.')
+            return deletedTask
         }
     }
 }
