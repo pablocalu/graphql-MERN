@@ -1,9 +1,13 @@
 import Project from '../models/Project.js'
+import Task from '../models/Task.js'
 
 export const resolvers = {
     Query: {
         hello: () => 'Hello World',
-        projects: async () => await Project.find()   
+        projects: async () => await Project.find(),
+        project: async (_, { _id }) => await Project.findById(_id),
+        task: async (_, { _id }) => await Task.findById(_id),
+        tasks: async () => await Task.find() 
     },
     Mutation: {
         createProject: async (_, { name, description }) => {
@@ -13,6 +17,16 @@ export const resolvers = {
             })
             const savedProject = await project.save()
             return savedProject
+        },
+        createTask: async (_, { title, projectId}) => {
+            const projectFound = await Project.findById(projectId)
+            if(!projectFound) throw new Error('Project not found.')
+            const task = new Task({
+                title,
+                projectId
+            })
+            const taskSaved = await task.save()
+            return taskSaved
         }
     }
 }
