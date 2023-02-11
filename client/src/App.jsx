@@ -1,7 +1,7 @@
 import React from 'react'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import {Projects} from '../src/pages/Projects'
+import Projects from './pages/Projects'
 import ProjectDetails from './pages/ProjectDetails'
 
 const client = new ApolloClient({
