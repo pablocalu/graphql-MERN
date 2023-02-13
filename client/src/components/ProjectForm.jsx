@@ -16,8 +16,8 @@ export default function ProjectForm() {
 
   return (
     <form>
-      <input type="text" name='name' placeholder='Write a title' />
-      <textarea name='description' rows="3" placeholder='Write a description' ></textarea>
+      <input type="text" name='name' placeholder='Write a title' onChange={handleChange} />
+      <textarea name='description' rows="3" placeholder='Write a description' onChange={handleChange} ></textarea>
       <button>
         Submit
       </button>
