@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
+import { CREATE_PROJECT } from '../graphql/projects'
 
 export default function ProjectForm() {
 
@@ -9,7 +10,7 @@ export default function ProjectForm() {
     description: ''
   })
 
-  
+  const [createProject, { loading, error, data }] = useMutation(CREATE_PROJECT)
 
   const handleChange = (e) => {
     setProject({
@@ -19,7 +20,12 @@ export default function ProjectForm() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    createProject({
+      variables: {
+        name: project.name,
+        description: project.description
+      }
+    })
   }
 
   return (
