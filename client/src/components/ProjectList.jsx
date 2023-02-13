@@ -17,7 +17,7 @@ export default function ProjectList() {
       {
         data.projects.map(p => (
           <ProjectCard
-            key={project._id}
+            key={p._id}
             project={p}
           />
         ))

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProjectCard({ project}) {
+export default function ProjectCard({ project }) {
   return (
     <div>
       <h2>{project.name}</h2>
