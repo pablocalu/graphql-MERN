@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { GET_PROJECT } from '../graphql/projects'
 import TaskList from '../components/tasks/TaskList'
+import TaskForm from '../components/tasks/TaskForm'
 
 export default function ProjectDetails() {
 
@@ -22,6 +23,8 @@ export default function ProjectDetails() {
       <h1>{data.project.name}</h1>
       <p>{data.project.description}</p>
       <button>Delete</button>
+      <TaskForm/>
+      <TaskList tasks={data.project.tasks}/>
     </>
   )
 }
