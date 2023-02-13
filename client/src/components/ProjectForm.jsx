@@ -33,7 +33,7 @@ export default function ProjectForm() {
       <input type="text" name='name' placeholder='Write a title' onChange={handleChange} />
       <textarea name='description' rows="3" placeholder='Write a description' onChange={handleChange} ></textarea>
       <button disabled={!project.name || !project.description || loading}>
-        Submit
+        Submit Project
       </button>
     </form>
   )
