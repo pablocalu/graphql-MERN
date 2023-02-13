@@ -6,17 +6,21 @@ import { useParams } from 'react-router-dom'
 
 export default function TaskForm() {
 
-    const [createTask] = useMutation(CREATE_TASK)
+    const [createTask] = useMutation(CREATE_TASK, {
+        refetchQueries: ['getProject']
+    })
     const params = useParams()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        createTask({
+        await createTask({
             variable: {
                 title: e.target.title.value,
                 projectId: params.id
             }
         })
+        e.target.reset()
+        e.target.title.focus()
     }
 
   return (
