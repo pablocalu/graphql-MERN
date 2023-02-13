@@ -6,7 +6,8 @@ export default function TaskList({ tasks }) {
   return (
     <>
       {tasks.map(task => (
-        <TaskCard/>
+        <TaskCard task={task} key={task._id}
+        />
       ))}
     </>
   )
